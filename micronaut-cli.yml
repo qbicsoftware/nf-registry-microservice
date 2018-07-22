@@ -1,5 +1,5 @@
 profile: service
 defaultPackage: life.qbic.nfregistry
 ---
-testFramework: junit
-sourceLanguage: java
+testFramework: spock
+sourceLanguage: groovy
