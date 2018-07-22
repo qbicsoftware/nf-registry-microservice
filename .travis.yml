@@ -1,5 +1,5 @@
 language:
-  - java
+  - groovy
   
 script:
   - ./gradlew test
