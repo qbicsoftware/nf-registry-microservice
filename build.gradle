@@ -9,7 +9,7 @@ buildscript {
     }
 }
 
-version "0.1"
+version "1.0.0-alpha"
 group "life.qbic.nfregistry"
 
 apply plugin:"io.spring.dependency-management"
