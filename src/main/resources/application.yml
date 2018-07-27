@@ -3,3 +3,10 @@ micronaut:
         name: nfregistry
     server:
         port: 8080
+mongodb:
+    uri: mongodb://localhost:27017/nfregistry
+    db: nfregistry
+    collection: traces
+
+
+

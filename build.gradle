@@ -31,13 +31,15 @@ dependencyManagement {
 }
 
 dependencies {
+    compile "io.micronaut.configuration:mongo-reactive"
     compile "io.micronaut:http-client"
     compile "io.micronaut:http-server-netty"
     compile "io.micronaut:runtime-groovy"
+    compile "org.codehaus.groovy:groovy-json:2.5.0"
     compileOnly "io.micronaut:inject-groovy"
     runtime "ch.qos.logback:logback-classic:1.2.3"
     testCompile "io.micronaut:inject-groovy"
-    testCompile("org.spockframework:spock-core:1.1-groovy-2.4") {
+    testCompile("org.spockframework:spock-core:1.1-groovy-2.5") {
         exclude group: "org.codehaus.groovy", module: "groovy-all"
     }
 }
