@@ -1,5 +1,6 @@
 package life.qbic.nfregistry
 
+import groovy.json.JsonSlurper
 import io.micronaut.context.ApplicationContext
 import io.micronaut.http.HttpRequest
 import io.micronaut.http.client.RxHttpClient
@@ -18,16 +19,18 @@ class InfoControllerTest extends Specification {
     @AutoCleanup
     RxHttpClient client = embeddedServer.applicationContext.createBean(RxHttpClient, embeddedServer.getURL())
 
-    void "test hello world response"() {
+    void "test info response"() {
         when:
         HttpRequest request = HttpRequest.GET('/info')
         String rsp  = client.toBlocking().retrieve(request)
 
         then:
-        rsp == """\
-        Version 1.0.0-alpha of the nf-registry microservice.
-        Author: Sven Fillinger <sven1103> <sven.fillinger@qbic.uni-tuebingen.de>
-        """.stripIndent()
+        def slurper = new JsonSlurper()
+        def result = slurper.parseText(rsp)
+
+        assert result.serviceInfo
+        assert result.serviceInfo.size() == 6
+        assert result.serviceInfo.author == 'Sven Fillinger'
     }
 
 }
