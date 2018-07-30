@@ -1,21 +1,43 @@
 package life.qbic.nfregistry
 
-import groovy.transform.CompileStatic
+import groovy.json.JsonBuilder
+
+import io.micronaut.context.annotation.ConfigurationProperties
 import io.micronaut.http.MediaType
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
 import io.micronaut.http.annotation.Produces
 
-@CompileStatic
 @Controller("/info")
+@ConfigurationProperties('micronaut.application')
 class InfoController {
+
+    String author = "No author provided"
+
+    String email = "No email provided"
+
+    String version = "No version info provided"
+
+    String apiv = "No API version specified"
+
+    String institution = "No insitution info provided"
+
     @Get("/")
-    @Produces(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
     String index() {
-        """\
-        Version 1.0.0-alpha of the nf-registry microservice.
-        Author: Sven Fillinger <sven1103> <sven.fillinger@qbic.uni-tuebingen.de>
-        """.stripIndent()
+        def builder = new JsonBuilder()
+
+        builder.'serviceInfo' {
+            name "name"
+            author "$author"
+            email "$email"
+            version "$version"
+            apiv "$apiv"
+            institution "$institution"
+        }
+
+        builder.toString()
+
     }
 
 }
