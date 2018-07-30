@@ -1,6 +1,12 @@
 micronaut:
     application:
         name: nfregistry
+        author: Sven Fillinger
+        email: sven.fillinger@qbic.uni-tuebingen.de
+        version: 1.0.0-alpha
+        apiv: 1
+        institution: Quantitative Biology Center, University of Tübingen
+
     server:
         port: 8080
 mongodb:
