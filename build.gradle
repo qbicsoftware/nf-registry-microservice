@@ -36,6 +36,7 @@ dependencies {
     compile "io.micronaut:http-server-netty"
     compile "io.micronaut:runtime-groovy"
     compile "org.codehaus.groovy:groovy-json:2.5.0"
+    compile 'io.swagger:swagger-jaxrs:1.5.15'
     compileOnly "io.micronaut:inject-groovy"
     runtime "ch.qos.logback:logback-classic:1.2.3"
     testCompile "io.micronaut:inject-groovy"
