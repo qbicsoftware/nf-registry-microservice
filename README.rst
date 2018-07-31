@@ -15,9 +15,10 @@ Description
 ~~~~~~~~~~~
 This microservice is implemented with micronaut_: *"A modern, JVM-based, full-stack framework for building modular, easily testable microservice applications."*.
 
-The target database is expected to be MongoDB, and we are using `MongoDB's reactive stream java driver`__ for asynchronous request handling.
+The target database is expected to be MongoDB_, and we are using `MongoDB's reactive stream java driver`__ for asynchronous request handling.
 
 .. _micronaut: http://micronaut.io/
+.. _MongoDB: https://www.mongodb.com/
 .. _reactive: http://mongodb.github.io/mongo-java-driver-reactivestreams/
 __ reactive_
 
@@ -28,6 +29,12 @@ This microservice provides a RESTful API (*API desscription coming soon*) in ord
 
 Test
 ~~~~~~~
+To perform the tests, simply execute this from this repo's root directory:
+
+.. code-block:: bash
+  
+  ./gradlew test
+
 
 Configure 
 ~~~~~~~~~~~~
@@ -35,8 +42,24 @@ Configure
 Run
 ~~~~~~
 
+To run the microservices locally, just run:
+
+.. code-block:: bash
+  
+  ./gradlew run
+
+
 Deploy 
-~~~~~~~~~
+~~~~~~~
+
+If you want to deploy the microservice as executable jar, just execute:
+
+
+.. code-block:: bash
+  
+  ./gradlew assemble
+  
+This will create distributions of the microservice as **zip** and **tar** archives under `./build/distributions`.
 
 
 
