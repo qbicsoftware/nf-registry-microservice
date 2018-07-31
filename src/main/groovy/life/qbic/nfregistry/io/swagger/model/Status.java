@@ -1,4 +1,4 @@
-package io.swagger.model;
+package life.qbic.nfregistry.io.swagger.model;
 
 import javax.validation.constraints.*;
 import javax.validation.Valid;

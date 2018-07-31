@@ -2,6 +2,7 @@ package life.qbic.nfregistry.beans
 
 import com.mongodb.reactivestreams.client.MongoClient
 import groovy.transform.CompileStatic
+import life.qbic.nfregistry.io.swagger.model.Status
 import life.qbic.nfregistry.subscribers.SimpleSubscriber
 import org.bson.Document
 import org.reactivestreams.Publisher
@@ -23,7 +24,7 @@ import java.util.concurrent.TimeUnit
  *
  */
 @CompileStatic
-class MongoDBStatus {
+class MongoDBTester {
 
     /**
      * The current date
@@ -33,7 +34,7 @@ class MongoDBStatus {
     /**
      * The database connection status ("dead", "alive")
      */
-    String status
+    Status.StatusEnum status
 
     /**
      * A MongoDB collection name
@@ -55,13 +56,13 @@ class MongoDBStatus {
      * @param database A MongoDB database name
      * @param collection A MongoSB collection name
      */
-    MongoDBStatus(MongoClient client,
+    MongoDBTester(MongoClient client,
                   String database,
                   String collection) {
         this.database = database
         this.collection = collection
-        status = isConnected(client) ? "alive" : "dead"
-        date = new Date()
+        status = isConnected(client) ? Status.StatusEnum.ALIVE
+                : Status.StatusEnum.DEAD
     }
 
     /**

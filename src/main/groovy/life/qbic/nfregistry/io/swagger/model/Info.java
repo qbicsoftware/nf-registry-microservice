@@ -1,6 +1,5 @@
-package io.swagger.model;
+package life.qbic.nfregistry.io.swagger.model;
 
-import javax.validation.constraints.*;
 import javax.validation.Valid;
 
 
@@ -16,6 +15,7 @@ public class Info   {
   private @Valid String email = null;
   private @Valid String version = null;
   private @Valid String apiv = null;
+  private @Valid String institution = null;
 
   /**
    * Application name
@@ -107,6 +107,24 @@ public class Info   {
     this.apiv = apiv;
   }
 
+  /**
+   * The institution of the author
+   **/
+  public Info institution(String institution) {
+    this.institution = institution;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "University of Tuebingen", value = "The institution of the author")
+  @JsonProperty("institution")
+  public String getInstitution() {
+    return institution;
+  }
+  public void setInstitution(String institution) {
+    this.institution = institution;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -121,12 +139,13 @@ public class Info   {
         Objects.equals(author, info.author) &&
         Objects.equals(email, info.email) &&
         Objects.equals(version, info.version) &&
-        Objects.equals(apiv, info.apiv);
+        Objects.equals(apiv, info.apiv) &&
+        Objects.equals(institution, info.institution);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, author, email, version, apiv);
+    return Objects.hash(name, author, email, version, apiv, institution);
   }
 
   @Override
@@ -139,6 +158,7 @@ public class Info   {
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    apiv: ").append(toIndentedString(apiv)).append("\n");
+    sb.append("    institution: ").append(toIndentedString(institution)).append("\n");
     sb.append("}");
     return sb.toString();
   }

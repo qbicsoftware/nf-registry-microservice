@@ -1,16 +1,18 @@
-package life.qbic.nfregistry
+package life.qbic.nfregistry.controllers.service
 
-import groovy.json.JsonBuilder
 
 import io.micronaut.context.annotation.ConfigurationProperties
+import io.micronaut.http.HttpResponse
 import io.micronaut.http.MediaType
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
 import io.micronaut.http.annotation.Produces
+import life.qbic.nfregistry.io.swagger.model.Info
+import life.qbic.nfregistry.io.swagger.model.Status
 
-@Controller("/info")
+@Controller("/service")
 @ConfigurationProperties('micronaut.application')
-class InfoController {
+class ServiceInfoController {
 
     String name = "No app name provided"
 
@@ -24,22 +26,26 @@ class InfoController {
 
     String institution = "No insitution info provided"
 
-    @Get("/")
+    @Get("/info")
     @Produces(MediaType.APPLICATION_JSON)
-    String index() {
-        def builder = new JsonBuilder()
+    HttpResponse<Info> getServiceInfo() {
 
-        builder {
-            name "$name"
-            author "$author"
-            email "$email"
-            version "$version"
-            apiv "$apiv"
-            institution "$institution"
+        def info = new Info()
+        info.with {
+            name = this.name
+            author = this.author
+            email = this.email
+            version = this.version
+            apiv = this.apiv
+            institution = this.institution
         }
-
-        builder.toString()
-
+        HttpResponse.created(info)
     }
+
+
+
+
+
+
 
 }
