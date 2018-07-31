@@ -28,9 +28,9 @@ class InfoControllerTest extends Specification {
         def slurper = new JsonSlurper()
         def result = slurper.parseText(rsp)
 
-        assert result.serviceInfo
-        assert result.serviceInfo.size() == 6
-        assert result.serviceInfo.author == 'Sven Fillinger'
+        assert result
+        assert result.size() == 6
+        assert result.author == 'Sven Fillinger'
     }
 
 }

@@ -1,7 +1,13 @@
-package life.qbic.nfregistry.beans;
+package life.qbic.nfregistry.beans
 
 import com.mongodb.reactivestreams.client.MongoClient
 import groovy.transform.CompileStatic
+import life.qbic.nfregistry.subscribers.SimpleSubscriber
+import org.bson.Document
+import org.reactivestreams.Publisher
+import org.reactivestreams.Subscriber
+
+import java.util.concurrent.TimeUnit
 
 /**
  * Small bean that contains the status information
@@ -64,14 +70,21 @@ class MongoDBStatus {
      * @param client A MongoDB client object
      * @return True, if connection throws no exceptions else False
      */
-    Boolean isConnected(MongoClient client){
+    Boolean isConnected(MongoClient client) {
+        // Create a publisher
+
+        Publisher<Document> publisher = client.getDatabase(database)
+                .getCollection(collection).find()
+        Subscriber<Document> subscriber = new SimpleSubscriber<>()
+        publisher.subscribe(subscriber)
         try {
-            def db = client.getDatabase(database)
-            db.getCollection(collection)
-        } catch( any ){
+            subscriber.await(5000, TimeUnit.MILLISECONDS)
+        } catch (any) {
+            any.printStackTrace()
             return false
         }
         return true
+
     }
 
 }

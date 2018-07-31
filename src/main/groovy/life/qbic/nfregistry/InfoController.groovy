@@ -12,6 +12,8 @@ import io.micronaut.http.annotation.Produces
 @ConfigurationProperties('micronaut.application')
 class InfoController {
 
+    String name = "No app name provided"
+
     String author = "No author provided"
 
     String email = "No email provided"
@@ -27,8 +29,8 @@ class InfoController {
     String index() {
         def builder = new JsonBuilder()
 
-        builder.'serviceInfo' {
-            name "name"
+        builder {
+            name "$name"
             author "$author"
             email "$email"
             version "$version"
