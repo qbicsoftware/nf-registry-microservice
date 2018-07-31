@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit
  * Can be used to subscribe on Publishers and receive
  * Objects of Type <T>.
  * This class also uses a CountDownLatch, which only expects
- * 1 worker thread by default.
+ * 1 worker thread by default in this implementation.
  *
  * Found this on GitHub:
  * https://github.com/mongodb/mongo-java-driver-reactivestreams/blob/master/examples/tour/src/main/tour/SubscriberHelpers.java
