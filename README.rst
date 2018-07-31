@@ -39,6 +39,27 @@ To perform the tests, simply execute this from this repo's root directory:
 Configure 
 ~~~~~~~~~~~~
 
+You can configure the micronaut application, server and the mongodb client in the ``application.yml`` file, provided under ``./src/main/resources``. An example config looks like this:
+
+
+.. code-block:: yaml
+
+    micronaut:
+        application:
+            name: nfregistry
+            author: Sven Fillinger
+            email: sven.fillinger@qbic.uni-tuebingen.de
+            version: 1.0.0-alpha
+            apiv: 1
+            institution: Quantitative Biology Center, University of Tübingen
+        server:
+            port: 8080
+    mongodb:
+        url: mongodb://localhost:27017
+        db: nfregistry
+        collection: traces
+
+
 Run
 ~~~~~~
 
@@ -59,7 +80,7 @@ If you want to deploy the microservice as executable jar, just execute:
   
   ./gradlew assemble
   
-This will create distributions of the microservice as **zip** and **tar** archives under `./build/distributions`.
+This will create distributions of the microservice as **zip** and **tar** archives under ``./build/distributions``.
 
 
 
