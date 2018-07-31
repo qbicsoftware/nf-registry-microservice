@@ -4,7 +4,7 @@ nf-registry-microservice
 .. image:: https://travis-ci.org/sven1103/nf-registry-microservice.svg?branch=master
   :target: https://travis-ci.org/sven1103/nf-registry-microservice
 
-A microservice consuming JSON objects emitted by Nextflows weblog feature and storage it into a MongoDB.
+A microservice consuming JSON objects emitted by Nextflows weblog feature and stores them into a MongoDB.
 
 **In development!**
 This microservice is still experimental!
