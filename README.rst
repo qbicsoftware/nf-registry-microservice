@@ -22,10 +22,27 @@ The target database is expected to be MongoDB_, and we are using `MongoDB's reac
 .. _reactive: http://mongodb.github.io/mongo-java-driver-reactivestreams/
 __ reactive_
 
-This microservice provides a RESTful API (*API desscription coming soon*) in order to consume trace objects emitted from Nexftlow_, using the `weblog`_ feature available since release 0.31.0. Moreover, workflow trace and status information can be requested via the API and therefore this microservice integrates as useful little addition in monitoring workflows submitted with Nextflow.
+This microservice provides a **RESTful API** in order to consume trace objects (process information) emitted by Nexftlow_, using the `weblog`_ feature available since release 0.31.0. Moreover, workflow trace and status information can be requested via the API and therefore this microservice integrates as useful little addition in monitoring workflows submitted with Nextflow.
 
 .. _Nexftlow: https://www.nextflow.io/
 .. _weblog: https://www.nextflow.io/docs/latest/tracing.html?highlight=weblog#weblog-via-http
+
+API
+~~~~
+The API is still under **heavy development**, so expext unannounced changes in the future until the first stable release. 
+
+The `API description`__ can be accessed on `swaggerhub`_.
+
+A **mockup** implementation for testing and client development can be accessed on host `https://virtserver.swaggerhub.com/qbic/nfregistry/1.0.0`, for example:
+
+.. code-block:: bash
+
+  curl https://virtserver.swaggerhub.com/qbic/nfregistry/1.0.0/service/info
+
+
+
+.. _swaggerhub: https://app.swaggerhub.com/apis/qbic/nfregistry/1.0.0
+__ swaggerhub_
 
 Test
 ~~~~~~~
